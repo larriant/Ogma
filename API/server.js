@@ -3,6 +3,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var passport = require('passport');
+var documentController = require('./controllers/document');
 var beerController = require('./controllers/beer');
 var userController = require('./controllers/user');
 var authController = require('./controllers/auth');
@@ -24,6 +25,18 @@ app.use(passport.initialize());
 // Create our Express router
 var router = express.Router();
 
+// Create endpoint handlers for /documents
+router.route('/documents')
+  .post(documentController.postDocuments)
+  .get(documentController.getDocuments);
+
+// Create endpoint handlers for /documents/:document_id
+router.route('/documents/:document_id')
+  .get(documentController.getDocument)
+  .put(documentController.putDocument)
+  .delete(documentController.deleteDocument);
+
+    
 // Create endpoint handlers for /beers
 router.route('/beers')
   .post(authController.isAuthenticated, beerController.postBeers)

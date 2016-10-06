@@ -1,0 +1,5 @@
+To start MongoDB:
+sudo service mongod start
+
+To start Express server:
+sudo nodejs server.js
