@@ -1,7 +1,7 @@
 {
   "name": "ogma-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "Notes to Flash Cards",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,5 +16,8 @@
     "mongoose": "^4.5.9",
     "passport": "^0.3.2",
     "passport-http": "^0.3.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0"
   }
 }

@@ -3,10 +3,9 @@ var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var passport = require('passport');
-var documentController = require('./controllers/document');
-var beerController = require('./controllers/beer');
 var userController = require('./controllers/user');
 var authController = require('./controllers/auth');
+var documentController = require('./controllers/document');
 
 // Connect to MongoDB
 mongoose.connect('mongodb://localhost:27017/ogma');
@@ -35,18 +34,6 @@ router.route('/documents/:document_id')
   .get(documentController.getDocument)
   .put(documentController.putDocument)
   .delete(documentController.deleteDocument);
-
-    
-// Create endpoint handlers for /beers
-router.route('/beers')
-  .post(authController.isAuthenticated, beerController.postBeers)
-  .get(authController.isAuthenticated, beerController.getBeers);
-
-// Create endpoint handlers for /beers/:beer_id
-router.route('/beers/:beer_id')
-  .get(authController.isAuthenticated, beerController.getBeer)
-  .put(authController.isAuthenticated, beerController.putBeer)
-  .delete(authController.isAuthenticated, beerController.deleteBeer);
 
 // Create endpoint handlers for /users
 router.route('/users')
